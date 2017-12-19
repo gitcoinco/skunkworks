@@ -1,0 +1,28 @@
+footer {
+  padding: 10px 20px;
+  background-color: #1b1b1b;
+  color: white;
+  height: 40px;
+  line-height: 2em;
+}
+
+.footer-links {
+  text-align: left;
+  width: 50%;
+  float: left;
+}
+
+.footer-links a {
+  padding-left: 20px;
+}
+
+footer > span {
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+}
+
+footer .heart {
+  color: red;
+  font-size: 2em;
+}

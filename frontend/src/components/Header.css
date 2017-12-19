@@ -1,0 +1,25 @@
+.header {
+  padding-top: 10px;
+  height: 45px;
+}
+
+.header .logo {
+  float: left;
+  width: 50%;
+}
+
+.header .logo img {
+  width: auto;
+  height: 40px;
+}
+
+.header .links {
+  width: 50%;
+  float: right;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.header .links a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,47 @@
+.wallpaper-meta {
+  font-weight: bold;
+  background-color: white;
+  overflow: auto;
+  border-bottom: 1px solid #999;
+  filter: drop-shadow(0px 0px 5px #999);
+}
+
+.wallpaper-meta div {
+  line-height: 40px;
+}
+
+.wallpaper-meta .left-section {
+  background-image: url(avatar.svg);
+  float: left;
+  margin-left: 30px;
+}
+
+.wallpaper-meta .right-section {
+  float: right;
+  text-align: right;
+  padding-right: 30px;
+}
+
+#likes-button {
+  background-image: url(heart.svg);
+  margin-right: 30px;
+  display: inline-block;
+}
+
+#downloads-button {
+  background-image: url(download.svg);
+  margin-right: 30px;
+  display: inline-block;
+}
+
+.svg-background {
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 24px auto;
+  text-indent: 30px;
+  text-align: left;
+}
+
+.right-section span {
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+Django==2.0
+django-filter==1.1.0
+djangorestframework==3.7.3
+image==1.5.16
+olefile==0.44
+Pillow==4.3.0
+pytz==2017.3
+Shapely==1.6.3

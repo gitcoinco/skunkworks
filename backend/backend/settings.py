@@ -127,7 +127,7 @@ WALLPAPERS_PATH = "wallpapers/"
 
 WALLPAPERS_ABSOLUTE_PATH = os.path.join(BASE_DIR, WALLPAPERS_PATH)
 WALLPAPER_GEN_PATH = os.path.normpath(os.path.join(
-    BASE_DIR, '../skunkworks/eth-wallpaper-gen/main.py'))
+    BASE_DIR, '../eth-wallpaper-gen/main.py'))
 
 STATICFILES_DIRS = [
     ("wallpapers", WALLPAPERS_ABSOLUTE_PATH),

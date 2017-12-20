@@ -6,14 +6,14 @@ import 'path';
 
 import { selectWallpaper, getWallpapers } from '../actions/wallpapers';
 import { apiConfig } from '../config/apiClient';
-
+import './Wallpapers.css';
 
 class Wallpapers extends React.Component {
   constructor(props) {
     super(props);
     this.filter = '';
     this.search = '';
-    this.baseUrl = apiConfig.url.replace(/\/$/, "");
+    this.baseUrl = apiConfig.url.replace(/\/$/, '');
   }
 
   componentWillMount() {
@@ -26,11 +26,9 @@ class Wallpapers extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.filter !== this.props.filter ||
-      this.search !== this.props.search) {
-      this.filter = this.props.filter
-      this.search = this.props.search
-      console.log('TEEEE')
+    if (this.filter !== this.props.filter || this.search !== this.props.search) {
+      this.filter = this.props.filter;
+      this.search = this.props.search;
       this.props.dispatch(getWallpapers(this.filter, this.search, this.props.max));
     }
   }
@@ -39,9 +37,13 @@ class Wallpapers extends React.Component {
     const { payload } = this.props.wallpapers;
     const images = payload.map((item, index) => {
       return (
-        <a key={item.id} onClick={this.handleClick.bind(this, item)}>
-          <img src={`${this.baseUrl}${item.url}`} alt={item.title} />
-        </a>
+        <div className="wallpaper" key={item.id} onClick={this.handleClick.bind(this, item)}>
+          <img className="image" src={`${this.baseUrl}${item.url}`} alt={item.title} />
+          <div className="middle">
+            <div className="overlay-downloads">{item.downloads}</div>
+            <div className="overlay-likes">{item.likes}</div>
+          </div>
+        </div>
       );
     });
 

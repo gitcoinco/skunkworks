@@ -14,7 +14,7 @@ import './Preview.css';
 class Preview extends Component {
   constructor(props) {
     super(props);
-    this.baseUrl = apiConfig.url.replace(/\/$/, "");
+    this.baseUrl = apiConfig.url.replace(/\/$/, '');
   }
 
   componentWillMount() {
@@ -22,7 +22,6 @@ class Preview extends Component {
   }
 
   render() {
-
     const { payload } = this.props.wallpaper;
     return (
       <div>

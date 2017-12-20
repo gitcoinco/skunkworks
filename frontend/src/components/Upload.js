@@ -66,8 +66,6 @@ class Upload extends React.Component {
     });
   };
 
-  onFileLoad = (e, file) => console.log('Loaded');
-
   componentDidUpdate(prevProps, prevState) {
     const { upload } = this.props;
     if (this.props.open && upload.fetched) {

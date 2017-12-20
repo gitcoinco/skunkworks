@@ -61,7 +61,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "prettier": "prettier --single-quote --print-width 120 --trailing-comma all --write 'src/**/*.{js,json,css}'",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "precommit": "lint-staged"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -107,5 +108,11 @@
   },
   "devDependencies": {
     "prettier": "^1.9.2"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

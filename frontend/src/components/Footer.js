@@ -22,7 +22,7 @@ class Filter extends React.Component {
     return (
       <footer>
         <div className="footer-links">
-          <a href="#"> Who we are? </a>
+          <a href="#who-we-are"> Who we are? </a>
           <a onClick={this.handleUploadModal.bind(this)} href="#create">
             Submit your wallpaper
           </a>

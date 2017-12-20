@@ -9,7 +9,7 @@ import './WallpaperMeta.css';
 class WallpaperMeta extends React.Component {
   handleDownload() {
     const downloadUrl = `${apiConfig.url}${WALLPAPERS}${this.props.wallpaper.payload.id}/media/`;
-    window.location.href = downloadUrl
+    window.location.href = downloadUrl;
   }
 
   handleLike() {
@@ -17,7 +17,6 @@ class WallpaperMeta extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { payload } = this.props.wallpaper;
 
     return (

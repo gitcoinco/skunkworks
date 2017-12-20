@@ -29,7 +29,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <div className="logo">
-          <a onClick={this.handleClick.bind(this)} href="#">
+          <a onClick={this.handleClick.bind(this)} href="#logo">
             <img src={logo} alt="Ethereum Logo" />
           </a>
         </div>

@@ -13,7 +13,6 @@ class Wallpapers extends React.Component {
     super(props);
     this.filter = '';
     this.search = '';
-    this.baseUrl = apiConfig.url.replace(/\/$/, '');
   }
 
   componentWillMount() {
@@ -38,7 +37,7 @@ class Wallpapers extends React.Component {
     const images = payload.map((item, index) => {
       return (
         <div className="wallpaper" key={item.id} onClick={this.handleClick.bind(this, item)}>
-          <img className="image" src={`${this.baseUrl}${item.url}`} alt={item.title} />
+          <img className="image" src={item.url} alt={item.title} />
           <div className="middle">
             <div className="overlay-downloads">{item.downloads}</div>
             <div className="overlay-likes">{item.likes}</div>

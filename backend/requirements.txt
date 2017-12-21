@@ -1,8 +1,10 @@
 Django==2.0
 django-filter==1.1.0
+django-cors-headers==2.1.0
 djangorestframework==3.7.3
 image==1.5.16
 olefile==0.44
 Pillow==4.3.0
+psycopg2==2.7.3.2
 pytz==2017.3
 Shapely==1.6.3

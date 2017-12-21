@@ -32,9 +32,7 @@ class CreateView(generics.ListCreateAPIView):
         """
 
         queryset = Wallpaper.objects.filter(active=True).annotate(
-            likes=Count('like'), url=Concat(Value(settings.STATIC_URL),
-                                            Value(
-                                            settings.WALLPAPERS_PATH),
+            likes=Count('like'), url=Concat(Value(settings.WALLPAPERS_URL),
                                             F('id'), Value('.'), F('ext'),
                                             output_field=CharField()))
 
@@ -68,7 +66,7 @@ class CreateView(generics.ListCreateAPIView):
             # Invalid file type
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        self.id = uuid.uuid4().hex
+        self.id = uuid.uuid4()
 
         filename = "{}{}.{}".format(
             settings.WALLPAPERS_ABSOLUTE_PATH, self.id, self.ext)
@@ -124,8 +122,7 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     """This class handles the http GET, PUT and DELETE requests."""
 
     queryset = Wallpaper.objects.annotate(
-        likes=Count('like'), url=Concat(Value(settings.STATIC_URL),
-                                        Value(settings.WALLPAPERS_PATH),
+        likes=Count('like'), url=Concat(Value(settings.WALLPAPERS_URL),
                                         F('id'), Value('.'), F('ext'),
                                         output_field=CharField()))
     serializer_class = WallpaperDetailsSerializer
@@ -145,8 +142,8 @@ class CreateReport(generics.CreateAPIView):
         if reports.count() >= likes.count():
             wp.active = False
             wp.save()
-            
-        # TODO: deactivate report if Reports > Likes 
+
+        # TODO: deactivate report if Reports > Likes
         data = {'ip': ip, 'wallpaper': wp.id}
         serializer = ReportsSerializer(data=data)
         if serializer.is_valid():
@@ -182,7 +179,7 @@ class DownloadView(generics.GenericAPIView):
 
         wp.update(downloads=F('downloads') + 1)
 
-        file_name = uuid.UUID(pk).hex
+        file_name = uuid.UUID(pk)
         fsock = open("{}{}.{}".format(settings.WALLPAPERS_ABSOLUTE_PATH,
                                       file_name, wp.first().ext), "rb")
         response = HttpResponse(

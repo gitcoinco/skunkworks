@@ -56,6 +56,11 @@ class WallpaperMeta extends React.Component {
             {payload.downloads}
           </span>
         </div>
+
+        <a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?text=Check out this #ETH Wallpaper:"
+          data-size="large">
+          Tweet</a>
       </div>
     );
   }

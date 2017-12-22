@@ -28,6 +28,17 @@
   display: inline-block;
 }
 
+#report-button {
+  background-image: url(report.svg);
+  margin-right: 30px;
+  display: inline-block;
+}
+
+#report-button:hover svg {
+  fill: aqua;
+  color: aqua;
+}
+
 #downloads-button {
   background-image: url(download.svg);
   margin-right: 30px;
@@ -44,4 +55,8 @@
 
 .right-section span {
   cursor: pointer;
+}
+
+.progress-off {
+  visibility: hidden;
 }

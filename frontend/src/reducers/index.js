@@ -5,6 +5,7 @@ import search from './search';
 import wallpapers from './wallpapers';
 import wallpaper from './wallpaper';
 import upload from './upload';
+import activity from './activity';
 
 export default combineReducers({
   filter,
@@ -12,4 +13,5 @@ export default combineReducers({
   wallpapers,
   wallpaper,
   upload,
+  activity,
 });

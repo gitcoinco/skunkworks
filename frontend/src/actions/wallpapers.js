@@ -4,7 +4,7 @@ export function getWallpapers(category = '', search = '', limit) {
   const type = `GET_WALLPAPERS`;
 
   limit = limit || 25;
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: `${type}_PENDING` });
     apiClient
       .get(`${WALLPAPERS}?category=${category}&search=${search}`)
@@ -18,7 +18,7 @@ export function getWallpapers(category = '', search = '', limit) {
 }
 
 export function uploadFinish() {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: `UPLOAD_WALLPAPER_FINISHED` });
   };
 }
@@ -30,10 +30,10 @@ export function uploadWallpaper(wallpaper) {
   data.append('file', wallpaper.file);
   data.append('title', wallpaper.title);
   data.append('author', wallpaper.author);
-  data.append('tags', wallpaper.tags);
+  data.append('tags', wallpaper.tags || '');
   data.append('logoSize', wallpaper.logoSize);
 
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: `${type}_PENDING` });
     apiClient
       .post(WALLPAPERS, data)
@@ -57,7 +57,7 @@ export const selectWallpaper = wallpaper => {
 
 export function getWallpaper(id) {
   const type = 'GET_WALLPAPER';
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch({ type: `${type}_PENDING` });
     apiClient
       .get(`${WALLPAPERS}${id}/`)
@@ -71,8 +71,8 @@ export function getWallpaper(id) {
 }
 
 export function likeWallpaper(id) {
-  const type = `LIKE_WALLPAPERS`;
-  return function(dispatch) {
+  const type = `WALLPAPER_ACTIVITY`;
+  return function (dispatch) {
     dispatch({ type: `${type}_PENDING` });
     apiClient
       .post(`${WALLPAPERS}${id}/like/`)
@@ -86,8 +86,8 @@ export function likeWallpaper(id) {
 }
 
 export function reportWallpaper(id) {
-  const type = `REPORT_WALLPAPERS`;
-  return function(dispatch) {
+  const type = `WALLPAPER_ACTIVITY`;
+  return function (dispatch) {
     dispatch({ type: `${type}_PENDING` });
     apiClient
       .post(`${WALLPAPERS}${id}/report/`)

@@ -22,13 +22,13 @@ class Filter extends React.Component {
     return (
       <footer>
         <div className="footer-links">
-          <a href="#who-we-are"> Who we are? </a>
+          <a href="https://gitcoin.co/about?source=ethwallpaper"> Who we are? </a>
           <a onClick={this.handleUploadModal.bind(this)} href="#create">
             Submit your wallpaper
           </a>
         </div>
         <span>
-          with <span className="heart">&hearts;</span> from colorado community
+          with <span className="heart">&hearts;</span> from gitcoin community
         </span>
 
         <Upload open={this.state.open} onClose={this.handleRequestClose.bind(this)} />

@@ -15,7 +15,7 @@ class Info extends React.Component {
         <h5>License</h5>
         <div>Creative Commons</div>
         <h3>Tags</h3>
-        <div>{payload.tags}</div>
+        <div>{payload.tags !== 'undefined' && payload.tags}</div>
       </div>
     );
   }

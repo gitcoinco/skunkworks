@@ -4,6 +4,7 @@
 }
 
 .header .logo {
+  filter: invert(100%);
   float: left;
   width: 50%;
 }

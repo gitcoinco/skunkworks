@@ -77,9 +77,11 @@ class Upload extends React.Component {
     const { upload } = this.props;
     return (
       <Dialog open={this.props.open} onClose={this.props.onClose}>
-        <DialogTitle>Upload Wallpaper</DialogTitle>
-        <DialogContent>
+        <DialogTitle>
+          Upload Wallpaper
           {upload.fetching && <LinearProgress />}
+        </DialogTitle>
+        <DialogContent>
 
           {this.state.file && (
             <div className="upload-preview">

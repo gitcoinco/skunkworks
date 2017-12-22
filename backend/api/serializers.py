@@ -21,6 +21,7 @@ class WallpaperDetailsSerializer(serializers.ModelSerializer):
     """Serializer to map the Model instance into JSON format."""
 
     likes = serializers.IntegerField()
+    reports = serializers.IntegerField()
     url = serializers.CharField()
 
     class Meta:
@@ -29,9 +30,9 @@ class WallpaperDetailsSerializer(serializers.ModelSerializer):
         model = Wallpaper
         fields = (
             'id', 'title', 'author', 'tags', 'resolution', 'category', 'ext', 'url',
-                  'downloads', 'date_created', 'likes')
+                  'downloads', 'date_created', 'likes', 'reports')
         read_only_fields = (
-            ['date_created', 'downloads', 'url', 'likes'])
+            ['date_created', 'downloads', 'url', 'likes', 'reports'])
 
 
 class LikesSerializer(serializers.ModelSerializer):

@@ -6,6 +6,8 @@ from django.conf import settings
 from django.db.models import CharField, Count, F, Value
 from django.db.models.functions import Concat
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+
 from PIL import Image
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -30,11 +32,12 @@ class CreateView(generics.ListCreateAPIView):
         """
         Override get_queryset() to filter on multiple values for 'created'
         """
-
+        reports = Count('report', distinct=True)
+        likes = Count('like', distinct=True)
         queryset = Wallpaper.objects.filter(active=True).annotate(
-            likes=Count('like'), url=Concat(Value(settings.WALLPAPERS_URL),
-                                            F('id'), Value('.'), F('ext'),
-                                            output_field=CharField()))
+            url=Concat(Value(settings.WALLPAPERS_URL),
+                       F('id'), Value('.'), F('ext'),
+                       output_field=CharField())).annotate(reports=reports).annotate(likes=likes)
 
         category = self.request.query_params.get('category', None)
         if category:
@@ -121,10 +124,13 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
 
     """This class handles the http GET, PUT and DELETE requests."""
 
+    reports = Count('report', distinct=True)
+    likes = Count('like', distinct=True)
     queryset = Wallpaper.objects.annotate(
-        likes=Count('like'), url=Concat(Value(settings.WALLPAPERS_URL),
-                                        F('id'), Value('.'), F('ext'),
-                                        output_field=CharField()))
+        likes=likes, reports=reports,
+        url=Concat(Value(settings.WALLPAPERS_URL), F('id'), Value('.'),
+                   F('ext'), output_field=CharField()))
+
     serializer_class = WallpaperDetailsSerializer
 
 
@@ -134,16 +140,20 @@ class CreateReport(generics.CreateAPIView):
 
     def post(self, request, pk, *args, **kwargs):
         ip = get_client_ip(request)
-        wp = Wallpaper.objects.get(id=pk)
 
-        reports = Report.objects.get(wallpaper=pk)
-        likes = Like.objects.get(wallpaper=pk)
+        wp = Wallpaper.objects.filter(id=uuid.UUID(pk)).first()
+        if wp is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-        if reports.count() >= likes.count():
+        likes = 0
+        reports = Report.objects.filter(wallpaper=pk).count()
+        if reports > 0:
+            likes = Like.objects.filter(wallpaper=pk).count()
+
+        if reports > likes:
             wp.active = False
             wp.save()
 
-        # TODO: deactivate report if Reports > Likes
         data = {'ip': ip, 'wallpaper': wp.id}
         serializer = ReportsSerializer(data=data)
         if serializer.is_valid():
@@ -172,16 +182,17 @@ class DownloadView(generics.GenericAPIView):
 
     def get(self, request, pk, *args, **kwargs):
 
-        wp = Wallpaper.objects.filter(id=uuid.UUID(pk))
+        wp = Wallpaper.objects.filter(id=pk).first()
 
         if (wp is None):
-            raise ValueError("this wallpaper doesn't exist")
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-        wp.update(downloads=F('downloads') + 1)
+        wp.downloads += 1
+        wp.save()
 
         file_name = uuid.UUID(pk)
         fsock = open("{}{}.{}".format(settings.WALLPAPERS_ABSOLUTE_PATH,
-                                      file_name, wp.first().ext), "rb")
+                                      file_name, wp.ext), "rb")
         response = HttpResponse(
             FileWrapper(fsock), content_type='image/jpeg')
         response['Content-Disposition'] = 'attachment; filename={}.jpg'.format(

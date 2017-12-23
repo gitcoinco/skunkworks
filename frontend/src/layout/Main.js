@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
 
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -20,6 +21,10 @@ class Main extends Component {
   render() {
     return (
       <div>
+        <MetaTags>
+          <meta property="og:image" content="https://d3vv6lp55qjaqc.cloudfront.net/items/2f2b2R0x1j3u450f0p3W/maxresdefault.png" />
+          <meta name="twitter:image" content="https://d3vv6lp55qjaqc.cloudfront.net/items/2f2b2R0x1j3u450f0p3W/maxresdefault.png" />
+        </MetaTags>
         <div className="main-fold" style={{ height: this.state.height }}>
           <Header />
           <Search />

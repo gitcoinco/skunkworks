@@ -5502,6 +5502,12 @@ react-jss@^8.1.0:
     prop-types "^15.6.0"
     theming "^1.2.1"
 
+react-meta-tags@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-0.3.0.tgz#7d99e8629d42da97f1b9b974b11712a1b51eaec4"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-popper@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.7.4.tgz#8649d539837e7c6f47bc9b24c9cf57a404e199a1"

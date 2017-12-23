@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import WallpaperMeta from '../components/WallpaperMeta';
 import Info from '../components/Info';
 import Wallpapers from '../components/Wallpapers';
+import MetaTags from 'react-meta-tags';
 
 import { getWallpaper } from '../actions/wallpapers';
 
@@ -20,6 +21,10 @@ class Preview extends Component {
     const { payload } = this.props.wallpaper;
     return (
       <div>
+        <MetaTags>
+          <meta property="og:image" content={payload.url} />
+          <meta name="twitter:image" content={payload.url} />
+        </MetaTags>
         <div className="preview">
           <Header />
           <div className="preview-wallpaper">

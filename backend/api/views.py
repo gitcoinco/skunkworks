@@ -150,7 +150,7 @@ class CreateReport(generics.CreateAPIView):
         if reports > 0:
             likes = Like.objects.filter(wallpaper=pk).count()
 
-        if reports > likes:
+        if reports >= likes:
             wp.active = False
             wp.save()
 

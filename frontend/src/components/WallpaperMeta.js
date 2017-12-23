@@ -8,10 +8,9 @@ import { LinearProgress } from 'material-ui/Progress';
 import './WallpaperMeta.css';
 
 class WallpaperMeta extends React.Component {
-
   state = {
-    updated: true
-  }
+    updated: true,
+  };
 
   handleDownload() {
     const downloadUrl = `${apiConfig.url}${WALLPAPERS}${this.props.wallpaper.payload.id}/media/`;
@@ -37,7 +36,7 @@ class WallpaperMeta extends React.Component {
 
   render() {
     const { payload } = this.props.wallpaper;
-    const cls = this.props.activity.fetching ? "progress-on" : "progress-off";
+    const cls = this.props.activity.fetching ? 'progress-on' : 'progress-off';
 
     return (
       <div className="wallpaper-meta">
@@ -57,10 +56,13 @@ class WallpaperMeta extends React.Component {
           </span>
         </div>
 
-        <a class="twitter-share-button"
+        <a
+          class="twitter-share-button"
           href="https://twitter.com/intent/tweet?text=Check out this #ETH Wallpaper:"
-          data-size="large">
-          Tweet</a>
+          data-size="large"
+        >
+          Tweet
+        </a>
       </div>
     );
   }

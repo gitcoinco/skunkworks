@@ -82,7 +82,6 @@ class Upload extends React.Component {
           {upload.fetching && <LinearProgress />}
         </DialogTitle>
         <DialogContent>
-
           {this.state.file && (
             <div className="upload-preview">
               <img src={this.state.file.preview} alt="preview" />

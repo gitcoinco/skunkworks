@@ -7,7 +7,6 @@ export default function reducer(
   },
   action,
 ) {
-
   const docsType = 'WALLPAPER_ACTIVITY';
   switch (action.type) {
     case `${docsType}_PENDING`:

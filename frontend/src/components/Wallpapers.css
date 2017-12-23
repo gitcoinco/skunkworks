@@ -91,10 +91,10 @@
 
 .overlay-downloads {
   background-image: url(download.svg);
-  left:5%;
+  left: 5%;
 }
 
 .overlay-likes {
   background-image: url(heart.svg);
   right: 5%;
-} 
+}

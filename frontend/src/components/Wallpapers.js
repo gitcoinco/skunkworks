@@ -5,7 +5,6 @@ import { push } from 'react-router-redux';
 import 'path';
 
 import { selectWallpaper, getWallpapers } from '../actions/wallpapers';
-import { apiConfig } from '../config/apiClient';
 import './Wallpapers.css';
 
 class Wallpapers extends React.Component {

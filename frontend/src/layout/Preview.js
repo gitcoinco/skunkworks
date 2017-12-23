@@ -7,14 +7,10 @@ import Info from '../components/Info';
 import Wallpapers from '../components/Wallpapers';
 
 import { getWallpaper } from '../actions/wallpapers';
-import { apiConfig } from '../config/apiClient';
 
 import './Preview.css';
 
 class Preview extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
     this.props.dispatch(getWallpaper(this.props.id));

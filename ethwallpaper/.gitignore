@@ -27,6 +27,7 @@ __pycache__
 # Django 
 db.sqlite3
 
+todo
 
 # VSCode
 .ropeproject

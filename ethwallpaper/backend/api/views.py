@@ -45,7 +45,7 @@ class CreateView(generics.ListCreateAPIView):
 
         search = self.request.query_params.get('search', None)
         if search:
-            queryset = queryset.filter(title__contains=search)
+            queryset = queryset.filter(title__icontains=search)
 
         return queryset
 

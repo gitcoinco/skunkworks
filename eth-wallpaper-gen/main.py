@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
+import math
 import os
 import sys
+
 from PIL import Image, ImageDraw
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
-
 
 # relative polygon co-ordinates
 magics = {
@@ -22,6 +23,7 @@ mirrors = {
     "bottom-left":  "top-right",
     "bottom-right": "top-left",
 }
+
 
 def scale(magic, scale, width, height):
     """
@@ -40,9 +42,10 @@ def scale(magic, scale, width, height):
         sin = (y - 0.5) / dist
         cos = (x - 0.5) / dist
         dist *= scale
-        resized_magic.append((dist*cos + 0.5, dist*sin + 0.5))
+        resized_magic.append((dist * cos + 0.5, dist * sin + 0.5))
 
-    return [(x*width, y*height) for (x, y) in resized_magic]
+    return [(x * width, y * height) for (x, y) in resized_magic]
+
 
 def load_image(filename):
     """
@@ -54,16 +57,17 @@ def load_image(filename):
     im = Image.open(filename)
     width, height = im.size
 
-    m = 1920.00/1266;
-    if width/height > m:
-        diff = width - (m*height)
-        im = im.crop((diff/2, 0, m*height, height))
+    m = 1920.00 / 1266
+    if width / height > m:
+        diff = width - (m * height)
+        im = im.crop((diff / 2, 0, m * height, height))
     else:
-        diff = height - width/m
-        im = im.crop((0, diff/2, width, width/m))
+        diff = height - width / m
+        im = im.crop((0, diff / 2, width, width / m))
 
     im.convert("RGB")
     return im
+
 
 def draw_outline(im, magic):
     """
@@ -76,12 +80,13 @@ def draw_outline(im, magic):
     fill_color = (180, 180, 180, 255)
 
     for i in range(len(magic)):
-        j = (i+1)%len(magic)
+        j = (i + 1) % len(magic)
         drw.line(
             (magic[i][0], magic[i][1], magic[j][0], magic[j][1]),
             fill=fill_color)
 
     del drw
+
 
 def filter(v):
     """
@@ -90,8 +95,9 @@ def filter(v):
     :param v: the pixel to process
     :return:  the processed version of the pixel
     """
-    limit = lambda x: int(min(x*1.3, 255))
+    limit = lambda x: int(min(x * 1.3, 255))
     return tuple([limit(x) for x in v])
+
 
 def main(input_filename, output_filename, eth_scale=1):
     """
@@ -108,24 +114,25 @@ def main(input_filename, output_filename, eth_scale=1):
     for _, magic in magics.items():
         magics[_] = scale(magic, eth_scale, width, height)
 
-    todo, done, mul = height*len(magics), 0, 1
+    todo, done, mul = height * len(magics), 0, 1
 
     for _, magic in magics.items():
-        # move pixels to each 
+        # move pixels to each
         magic_polygon = Polygon(magic)
-        for x in range(height):
-            for y in range(width):
+        (min_x, min_y, max_x, max_y) = magic_polygon.bounds
+        for x in range(math.floor(min_x), math.ceil(max_x)):
+            for y in range(math.floor(min_y), math.ceil(max_y)):
                 if magic_polygon.contains(Point(x, y)):
                     other = magics[mirrors[_]]
                     x_trans = int(other[0][0] - magic[0][0])
                     y_trans = int(other[0][1] - magic[0][1])
-                    v = pixels[x+x_trans, y+y_trans]
+                    v = pixels[x + x_trans, y + y_trans]
                     pixels[x, y] = filter(v)
 
             # update progress to console
             done += 1
-            if done == int(todo*mul/10):
-                sys.stdout.write("{}%... ".format(mul*10))
+            if done == int(todo * mul / 10):
+                sys.stdout.write("{}%... ".format(mul * 10))
                 sys.stdout.flush()
                 mul += 1
 

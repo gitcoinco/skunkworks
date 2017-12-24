@@ -75,7 +75,6 @@ class Upload extends React.Component {
 
   render() {
     const { upload } = this.props;
-    const disabled = upload.fetching ? "disabled" : "";
     return (
       <Dialog open={this.props.open} onClose={this.props.onClose}>
         <DialogTitle>
@@ -133,7 +132,7 @@ class Upload extends React.Component {
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button disabled={disabled} onClick={this.handleUpload.bind(this)} color="primary">
+          <Button disabled={upload.fetching} onClick={this.handleUpload.bind(this)} color="primary">
             Upload
           </Button>
         </DialogActions>

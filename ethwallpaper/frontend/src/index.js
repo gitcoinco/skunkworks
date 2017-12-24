@@ -10,6 +10,14 @@ import './index.css';
 
 const app = document.getElementById('root');
 
+history.listen(location => {
+  if (typeof window.ga === 'function') {
+    window.ga('set', 'page', location.pathname + location.search);
+    window.ga('send', 'pageview');
+  }
+  return null;
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <App history={history} />

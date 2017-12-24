@@ -28,9 +28,10 @@ class Filter extends React.Component {
           </a>
         </div>
         <span>
-          with <span className="heart">&hearts;</span> from gitcoin community
+          <a href="https://gitcoin.co/">
+            with <span className="heart">&hearts;</span> from gitcoin community
+          </a>
         </span>
-
         <Upload open={this.state.open} onClose={this.handleRequestClose.bind(this)} />
       </footer>
     );

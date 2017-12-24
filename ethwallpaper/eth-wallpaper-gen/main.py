@@ -4,7 +4,7 @@ import math
 import os
 import sys
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 
@@ -23,6 +23,11 @@ mirrors = {
     "bottom-left":  "top-right",
     "bottom-right": "top-left",
 }
+
+WATERMARK = "ethwallpaper.co"
+FONT = "Aquabase.ttf"
+WATERMARK_OPACITY = 0.3
+WATERMARK_RATIO = 40
 
 
 def scale(magic, scale, width, height):
@@ -88,6 +93,30 @@ def draw_outline(im, magic):
     del drw
 
 
+def add_watermark(img):
+    """
+        Apply watermark to the wallpaper
+
+        :[param img: Image to apply watermark to
+    """
+
+    watermark = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    size = int(watermark.size[0] / WATERMARK_RATIO)
+    n_font = ImageFont.truetype(FONT, size)
+
+    n_width, n_height = n_font.getsize(WATERMARK)
+
+    draw = ImageDraw.Draw(watermark, 'RGBA')
+    draw.text(((watermark.size[0] - n_width * 1.2),
+              (watermark.size[1] - n_height * 1.2)),
+              WATERMARK, font=n_font)
+
+    alpha = watermark.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(WATERMARK_OPACITY)
+    watermark.putalpha(alpha)
+    return Image.composite(watermark, img, watermark)
+
+
 def filter(v):
     """
     Applies a filter on a given pixel.
@@ -114,12 +143,13 @@ def main(input_filename, output_filename, eth_scale=1):
     for _, magic in magics.items():
         magics[_] = scale(magic, eth_scale, width, height)
 
-    todo, done, mul = height * len(magics), 0, 1
+    done, mul = 0, 1
 
     for _, magic in magics.items():
         # move pixels to each
         magic_polygon = Polygon(magic)
         (min_x, min_y, max_x, max_y) = magic_polygon.bounds
+        todo = math.ceil(max_x) - math.floor(min_x)
         for x in range(math.floor(min_x), math.ceil(max_x)):
             for y in range(math.floor(min_y), math.ceil(max_y)):
                 if magic_polygon.contains(Point(x, y)):
@@ -131,15 +161,14 @@ def main(input_filename, output_filename, eth_scale=1):
 
             # update progress to console
             done += 1
-            if done == int(todo * mul / 10):
+            if done == int(todo * mul / 10 * 4):
                 sys.stdout.write("{}%... ".format(mul * 10))
                 sys.stdout.flush()
                 mul += 1
 
         draw_outline(im, magic)
     print("")
-
-    im.save(output_filename)
+    add_watermark(im).save(output_filename)
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

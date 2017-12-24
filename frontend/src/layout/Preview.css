@@ -1,0 +1,16 @@
+.preview {
+  background-image: radial-gradient(#777 0%, #000 100%);
+}
+
+.preview-info {
+  background-color: #efefef;
+  padding: 50px 10px;
+}
+
+.preview-wallpaper {
+  padding: 30px;
+}
+
+.preview-wallpaper img {
+  width: 100% !important;
+}

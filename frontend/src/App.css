@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+.main-fold {
+  background-image: url(background-eth.jpg);
+  color: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.main-fold .search-section {
+  margin-top: 30vh;
+}
+
+.search-section h1 {
+  font-size: 4em;
+  width: 50%;
+  margin: 30px auto;
+  line-height: 1em;
+  text-shadow: -1px -1px 0 #202e3a, 1px -1px 0 #202e3a, -1px 1px 0 #202e3a, 1px 1px 0 #202e3a;
+}
+
+.search-section .search-text {
+  background-image: url(search_icon.svg);
+  width: 40%;
+  height: 39px;
+  padding-left: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  background-size: 20px;
+}
+
+.filters ul {
+  font-weight: bold;
+  list-style: none;
+  overflow: auto;
+  border-bottom: solid 2px #85d8ce;
+}
+
+.filters ul li {
+  float: left;
+  width: 16%;
+}
+
+.filter-icon {
+  height: 22px;
+  width: auto;
+}
+
+.filters ul li span {
+  background: white;
+  margin-bottom: 8px;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.filters ul li.selected {
+  background: linear-gradient(45deg, #06161f 0%, #85d8ce 50%, #33cc18 100%);
+}

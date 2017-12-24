@@ -1,0 +1,100 @@
+.wallpapers {
+  padding: 0;
+  line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap: 0px;
+  -moz-column-count: 5;
+  -moz-column-gap: 0px;
+  column-count: 5;
+  column-gap: 0px;
+  background-color: #efefef;
+}
+
+.wallpaper {
+  position: relative;
+  cursor: pointer;
+}
+
+.wallpaper img {
+  width: 98% !important;
+  height: auto !important;
+  padding: 2px 4px;
+  transition: 0.1s ease;
+}
+
+.wallpaper:hover img {
+  opacity: 0.3;
+}
+
+@media (max-width: 1200px) {
+  .wallpapers {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wallpapers {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .wallpapers {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .wallpapers {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
+
+.middle {
+  width: 100%;
+  transition: 0.1s ease;
+  opacity: 0;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.wallpaper:hover .middle {
+  opacity: 1;
+}
+
+.overlay-downloads,
+.overlay-likes {
+  background-color: #838282;
+  color: black;
+  font-size: 12px;
+  padding: 11px 13px;
+  position: absolute;
+  margin-top: 5%;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position-x: 4px;
+  background-size: 15px;
+  background-position-y: center;
+  text-indent: 8px;
+}
+
+.overlay-downloads {
+  background-image: url(download.svg);
+  left: 5%;
+}
+
+.overlay-likes {
+  background-image: url(heart.svg);
+  right: 5%;
+}

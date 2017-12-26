@@ -13,7 +13,7 @@ class Search extends React.Component {
   render() {
     return (
       <section className="search-section">
-        <h1>Wallpapers as decentralzed as your currency</h1>
+        <h1>Wallpapers as decentralized as your currency</h1>
         <input
           onKeyPress={this.handleKeyPress.bind(this)}
           className="search-text"

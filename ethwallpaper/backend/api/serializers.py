@@ -13,7 +13,8 @@ class WallpaperSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'author', 'tags', 'ext',
                   'downloads', 'date_created', 'resolution', 'category')
         read_only_fields = (
-            ['ext', 'resolution', 'category', 'date_created', 'downloads'])
+            ['ext', 'resolution', 'category', 'date_created', 'date_updated',
+             'downloads'])
 
 
 class WallpaperDetailsSerializer(serializers.ModelSerializer):
@@ -29,8 +30,8 @@ class WallpaperDetailsSerializer(serializers.ModelSerializer):
         """Meta class to map serializer's fields with the model fields."""
         model = Wallpaper
         fields = (
-            'id', 'title', 'author', 'tags', 'resolution', 'category', 'ext', 'url',
-                  'downloads', 'date_created', 'likes', 'reports')
+            'id', 'title', 'author', 'tags', 'resolution', 'category', 'ext',
+            'url', 'downloads', 'date_created', 'likes', 'reports')
         read_only_fields = (
             ['date_created', 'downloads', 'url', 'likes', 'reports'])
 
@@ -45,7 +46,7 @@ class LikesSerializer(serializers.ModelSerializer):
         model = Like
         fields = ('id', 'ip', 'wallpaper', 'date_created')
         read_only_fields = (['date_created'])
-    
+
 
 class ReportsSerializer(serializers.ModelSerializer):
 

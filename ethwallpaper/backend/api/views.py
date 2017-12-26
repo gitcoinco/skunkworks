@@ -23,6 +23,7 @@ class CreateView(generics.ListCreateAPIView):
         self.id = None
         self.size = None
         self.ext = None
+        self.logo_size = 1
 
     """This class defines the create behavior of our WP api."""
 
@@ -34,7 +35,7 @@ class CreateView(generics.ListCreateAPIView):
         """
         reports = Count('report', distinct=True)
         likes = Count('like', distinct=True)
-        queryset = Wallpaper.objects.filter(active=True).annotate(
+        queryset = Wallpaper.objects.filter(status="Active").annotate(
             url=Concat(Value(settings.WALLPAPERS_URL),
                        F('id'), Value('.'), F('ext'),
                        output_field=CharField())).annotate(reports=reports).annotate(likes=likes)
@@ -78,21 +79,21 @@ class CreateView(generics.ListCreateAPIView):
             for chunk in uploaded_file.chunks():
                 temp_file.write(chunk)
 
+        Image.MAX_IMAGE_PIXELS = None
         im = Image.open(filename)
         self.size = im.size
 
-        logoSize = 1
         if 'logoSize' in request.POST:
             if request.POST['logoSize'] == 'large':
-                logoSize = 1.4
+                self.logo_size = 1.4
             elif request.POST['logoSize'] == 'small':
-                logoSize = 0.6
+                self.logo_size = 0.6
 
-        spec = importlib.util.spec_from_file_location(
-            "module.name", settings.WALLPAPER_GEN_PATH)
-        gen = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(gen)
-        gen.main(filename, filename, logoSize)
+        # spec = importlib.util.spec_from_file_location(
+        #     "module.name", settings.WALLPAPER_GEN_PATH)
+        # gen = importlib.util.module_from_spec(spec)
+        # spec.loader.exec_module(gen)
+        # gen.main(filename, filename, logoSize)
 
         return self.create(request, *args, **kwargs)
 
@@ -100,8 +101,8 @@ class CreateView(generics.ListCreateAPIView):
         """Save the post data when creating a new wallpaper."""
 
         serializer.save(id=self.id, resolution='{} x {}'.format(
-            self.size[0], self.size[1]), category=self._get_category(),
-            ext=self.ext)
+            self.size[0], self.size[1]), logo_size=self.logo_size,
+            category=self._get_category(), ext=self.ext)
 
     def _get_category(self):
         """ Get Category from resolution """
@@ -151,7 +152,7 @@ class CreateReport(generics.CreateAPIView):
             likes = Like.objects.filter(wallpaper=pk).count()
 
         if reports >= likes:
-            wp.active = False
+            wp.status = "Reported"
             wp.save()
 
         data = {'ip': ip, 'wallpaper': wp.id}

@@ -13,3 +13,29 @@
   max-width: 90%;
   height: auto;
 }
+
+.text-fileds {
+  width: 60%;
+  float: left;
+}
+
+.size-fields {
+  color: rgba(0, 0, 0, 0.87);
+  float: right;
+}
+
+.size-fields > div {
+  padding-top: 30px;
+}
+
+.radio-group {
+  padding: 0 20px;
+}
+
+.form-field {
+  padding: 10px;
+}
+
+.dialog-title {
+  height: 20px;
+}

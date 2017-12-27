@@ -14,6 +14,10 @@ SENDER = "upload@ethwallpeper.co"
 
 class EmailHelper(object):
 
+    """
+    Email helper
+    """
+
     def __init__(self, api_key):
         sg = sendgrid.SendGridAPIClient(apikey=api_key)
         self.client = sg.client

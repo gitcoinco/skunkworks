@@ -49,9 +49,7 @@ while True:
     image_filename = "{}.{}".format(image['id'], image['ext'])
     preview_url = "{}{}.{}".format(PREVIEW_URL, image['id'], image['ext'])
     image_path = os.path.join(dir_path, IMAGES_PATH, image_filename)
-
     image_path = os.path.normpath(image_path)
-
     generator = WallpaperGenerator(image_path, image_path, image['logo_size'])
 
     try:

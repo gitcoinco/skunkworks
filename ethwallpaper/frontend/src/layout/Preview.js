@@ -12,7 +12,6 @@ import { getWallpaper } from '../actions/wallpapers';
 import './Preview.css';
 
 class Preview extends Component {
-
   componentWillMount() {
     this.props.dispatch(getWallpaper(this.props.id));
   }

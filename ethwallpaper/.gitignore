@@ -34,3 +34,4 @@ todo
 .vscode/*
 
 backend/static/*
+config.ini

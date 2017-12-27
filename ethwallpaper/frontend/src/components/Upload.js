@@ -1,55 +1,51 @@
-import React from "react";
-import { connect } from "react-redux";
-import { push } from "react-router-redux";
-import Dropzone from "react-dropzone";
-import Button from "material-ui/Button";
-import TextField from "material-ui/TextField";
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogTitle
-} from "material-ui/Dialog";
-import Radio, { RadioGroup } from "material-ui/Radio";
-import { FormControlLabel } from "material-ui/Form";
-import { LinearProgress } from "material-ui/Progress";
+import React from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import Dropzone from 'react-dropzone';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+import Dialog, { DialogActions, DialogContent, DialogTitle } from 'material-ui/Dialog';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import { FormControlLabel } from 'material-ui/Form';
+import { LinearProgress } from 'material-ui/Progress';
 
-import { uploadWallpaper, uploadFinish } from "../actions/wallpapers";
+import { uploadWallpaper, uploadFinish } from '../actions/wallpapers';
 
-import "./Upload.css";
+import './Upload.css';
 
 class Upload extends React.Component {
   state = {
-    title: "",
-    author: "",
-    logoSize: "normal",
+    title: '',
+    author: '',
+    logoSize: 'normal',
     open: false,
     file: null,
     formValidator: {
       title: true,
       author: true,
-      author_email: true
-    }
+      author_email: true,
+    },
   };
 
   onDrop(files) {
     this.setState({
-      file: files[0]
+      file: files[0],
     });
   }
 
   resetState() {
     this.setState({
-      title: "",
-      author: "",
-      authorEmail: "",
-      logoSize: "normal",
+      title: '',
+      author: '',
+      authorEmail: '',
+      logoSize: 'normal',
       open: false,
       file: null,
       formValidator: {
         title: true,
         author: true,
-        author_email: true
-      }
+        author_email: true,
+      },
     });
   }
 
@@ -66,11 +62,7 @@ class Upload extends React.Component {
   handleUpload() {
     const validatorState = this.state.formValidator;
 
-    if (
-      validatorState.author &&
-      validatorState.author_email &&
-      validatorState.title
-    ) {
+    if (validatorState.author && validatorState.author_email && validatorState.title) {
       this.props.dispatch(uploadWallpaper(this.state));
     }
   }
@@ -85,7 +77,7 @@ class Upload extends React.Component {
 
   handleTextChange = name => event => {
     this.setState({
-      [name]: event.target.value
+      [name]: event.target.value,
     });
   };
 
@@ -95,7 +87,7 @@ class Upload extends React.Component {
 
     const expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (event.target.id === "author_email" && !expr.test(event.target.value)) {
+    if (event.target.id === 'author_email' && !expr.test(event.target.value)) {
       validatorState[event.target.id] = false;
     }
 
@@ -127,15 +119,8 @@ class Upload extends React.Component {
           )}
 
           {this.state.file === null && (
-            <Dropzone
-              accept="image/jpeg, image/png"
-              className="upload-form"
-              onDrop={this.onDrop.bind(this)}
-            >
-              <p>
-                Try dropping some files here, or click to select files to
-                upload.
-              </p>
+            <Dropzone accept="image/jpeg, image/png" className="upload-form" onDrop={this.onDrop.bind(this)}>
+              <p>Try dropping some files here, or click to select files to upload.</p>
             </Dropzone>
           )}
 
@@ -145,7 +130,7 @@ class Upload extends React.Component {
               className="form-field"
               id="title"
               label="Title*"
-              onChange={this.handleTextChange("title")}
+              onChange={this.handleTextChange('title')}
               onBlur={this.validate.bind(this)}
               type="text"
               margin="normal"
@@ -157,7 +142,7 @@ class Upload extends React.Component {
               className="form-field"
               id="author"
               label="Author*"
-              onChange={this.handleTextChange("author")}
+              onChange={this.handleTextChange('author')}
               onBlur={this.validate.bind(this)}
               type="text"
               error={!formValidator.author}
@@ -168,7 +153,7 @@ class Upload extends React.Component {
               className="form-field"
               id="author_email"
               label="Author Email*"
-              onChange={this.handleTextChange("author_email")}
+              onChange={this.handleTextChange('author_email')}
               onBlur={this.validate.bind(this)}
               type="email"
               helperText="Used to send you a link when your image is done processing. We'll never sell your email address"
@@ -181,7 +166,7 @@ class Upload extends React.Component {
               className="form-field"
               id="tags"
               label="Tags"
-              onChange={this.handleTextChange("tags")}
+              onChange={this.handleTextChange('tags')}
               type="text"
               fullWidth
             />
@@ -195,33 +180,17 @@ class Upload extends React.Component {
               value={this.state.logoSize}
               onChange={this.handleChange}
             >
-              <FormControlLabel
-                value="small"
-                control={<Radio />}
-                label="Small"
-              />
+              <FormControlLabel value="small" control={<Radio />} label="Small" />
 
-              <FormControlLabel
-                value="normal"
-                control={<Radio />}
-                label="Normal"
-              />
+              <FormControlLabel value="normal" control={<Radio />} label="Normal" />
 
-              <FormControlLabel
-                value="large"
-                control={<Radio />}
-                label="Large"
-              />
+              <FormControlLabel value="large" control={<Radio />} label="Large" />
             </RadioGroup>
           </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button
-            disabled={upload.fetching}
-            onClick={this.handleUpload.bind(this)}
-            color="primary"
-          >
+          <Button disabled={upload.fetching} onClick={this.handleUpload.bind(this)} color="primary">
             Upload
           </Button>
         </DialogActions>
@@ -232,7 +201,7 @@ class Upload extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    upload: state.upload
+    upload: state.upload,
   };
 };
 export default connect(mapStateToProps)(Upload);

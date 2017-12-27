@@ -30,6 +30,7 @@ export function uploadWallpaper(wallpaper) {
   data.append('file', wallpaper.file);
   data.append('title', wallpaper.title);
   data.append('author', wallpaper.author);
+  data.append('author_email', wallpaper.author_email);
   data.append('tags', wallpaper.tags || '');
   data.append('logoSize', wallpaper.logoSize);
 

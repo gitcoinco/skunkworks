@@ -17,8 +17,8 @@ class Upload extends React.Component {
   state = {
     title: '',
     author: '',
+    authorEmail: '',
     logoSize: 'normal',
-    open: false,
     file: null,
     formValidator: {
       title: true,
@@ -39,7 +39,6 @@ class Upload extends React.Component {
       author: '',
       authorEmail: '',
       logoSize: 'normal',
-      open: false,
       file: null,
       formValidator: {
         title: true,
@@ -49,31 +48,22 @@ class Upload extends React.Component {
     });
   }
 
-  handleUploadSuccess = id => {
-    this.resetState();
-    this.props.dispatch(uploadFinish());
-    this.props.dispatch(push(`/preview/${id}`));
-  };
-
   handleChange = (event, logoSize) => {
     this.setState({ logoSize });
   };
 
   handleUpload() {
-    const validatorState = this.state.formValidator;
-
-    if (validatorState.author && validatorState.author_email && validatorState.title) {
-      this.props.dispatch(uploadWallpaper(this.state));
+    if (this.props.open && this.props.upload.fetched) {
+      this.props.dispatch(uploadFinish());
+      this.props.onClose();
+      this.resetState();
+    } else {
+      const validatorState = this.state.formValidator;
+      if (validatorState.author && validatorState.author_email && validatorState.title) {
+        this.props.dispatch(uploadWallpaper(this.state));
+      }
     }
   }
-
-  handleUploadModal = () => {
-    this.setState({ open: true });
-  };
-
-  handleRequestClose = () => {
-    this.props.open = false;
-  };
 
   handleTextChange = name => event => {
     this.setState({
@@ -94,13 +84,6 @@ class Upload extends React.Component {
     this.setState({ formValidator: validatorState });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const { upload } = this.props;
-    if (this.props.open && upload.fetched) {
-      this.handleUploadSuccess(upload.payload.id);
-    }
-  }
-
   render() {
     const { upload } = this.props;
     const { formValidator } = this.state;
@@ -112,86 +95,96 @@ class Upload extends React.Component {
           {upload.fetching && <LinearProgress />}
         </DialogTitle>
         <DialogContent>
-          {this.state.file && (
-            <div className="upload-preview">
-              <img src={this.state.file.preview} alt="preview" />
+          <div hidden={upload.fetched}>
+            {this.state.file && (
+              <div className="upload-preview">
+                <img src={this.state.file.preview} alt="preview" />
+              </div>
+            )}
+
+            {this.state.file === null && (
+              <Dropzone accept="image/jpeg, image/png" className="upload-form" onDrop={this.onDrop.bind(this)}>
+                <p>Try dropping some files here, or click to select files to upload.</p>
+              </Dropzone>
+            )}
+
+            <div className="text-fileds">
+              <TextField
+                autoFocus
+                className="form-field"
+                id="title"
+                label="Title*"
+                onChange={this.handleTextChange('title')}
+                onBlur={this.validate.bind(this)}
+                type="text"
+                margin="normal"
+                error={!formValidator.title}
+                fullWidth
+              />
+
+              <TextField
+                className="form-field"
+                id="author"
+                label="Author*"
+                onChange={this.handleTextChange('author')}
+                onBlur={this.validate.bind(this)}
+                type="text"
+                error={!formValidator.author}
+                fullWidth
+              />
+
+              <TextField
+                className="form-field"
+                id="author_email"
+                label="Author Email*"
+                onChange={this.handleTextChange('author_email')}
+                onBlur={this.validate.bind(this)}
+                type="email"
+                helperText="Used to send you a link when your image is done processing. We'll never sell your email address"
+                margin="normal"
+                error={!formValidator.author_email}
+                fullWidth
+              />
+
+              <TextField
+                className="form-field"
+                id="tags"
+                label="Tags"
+                onChange={this.handleTextChange('tags')}
+                type="text"
+                fullWidth
+              />
             </div>
-          )}
+            <div className="size-fields">
+              <div>Size of Ethereum logo</div>
+              <RadioGroup
+                className="radio-group"
+                aria-label="Size"
+                name="size"
+                value={this.state.logoSize}
+                onChange={this.handleChange}
+              >
+                <FormControlLabel value="small" control={<Radio />} label="Small" />
 
-          {this.state.file === null && (
-            <Dropzone accept="image/jpeg, image/png" className="upload-form" onDrop={this.onDrop.bind(this)}>
-              <p>Try dropping some files here, or click to select files to upload.</p>
-            </Dropzone>
-          )}
+                <FormControlLabel value="normal" control={<Radio />} label="Normal" />
 
-          <div className="text-fileds">
-            <TextField
-              autoFocus
-              className="form-field"
-              id="title"
-              label="Title*"
-              onChange={this.handleTextChange('title')}
-              onBlur={this.validate.bind(this)}
-              type="text"
-              margin="normal"
-              error={!formValidator.title}
-              fullWidth
-            />
-
-            <TextField
-              className="form-field"
-              id="author"
-              label="Author*"
-              onChange={this.handleTextChange('author')}
-              onBlur={this.validate.bind(this)}
-              type="text"
-              error={!formValidator.author}
-              fullWidth
-            />
-
-            <TextField
-              className="form-field"
-              id="author_email"
-              label="Author Email*"
-              onChange={this.handleTextChange('author_email')}
-              onBlur={this.validate.bind(this)}
-              type="email"
-              helperText="Used to send you a link when your image is done processing. We'll never sell your email address"
-              margin="normal"
-              error={!formValidator.author_email}
-              fullWidth
-            />
-
-            <TextField
-              className="form-field"
-              id="tags"
-              label="Tags"
-              onChange={this.handleTextChange('tags')}
-              type="text"
-              fullWidth
-            />
+                <FormControlLabel value="large" control={<Radio />} label="Large" />
+              </RadioGroup>
+            </div>
           </div>
-          <div className="size-fields">
-            <div>Size of Ethereum logo</div>
-            <RadioGroup
-              className="radio-group"
-              aria-label="Size"
-              name="size"
-              value={this.state.logoSize}
-              onChange={this.handleChange}
-            >
-              <FormControlLabel value="small" control={<Radio />} label="Small" />
-
-              <FormControlLabel value="normal" control={<Radio />} label="Normal" />
-
-              <FormControlLabel value="large" control={<Radio />} label="Large" />
-            </RadioGroup>
+          <div hidden={!upload.fetched}>
+            <h5> Your wallpaper has been uploaded successfully!</h5>
+            <div>It is queued for processing and you will receive email notification when ready!</div>
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.props.onClose}>Cancel</Button>
+          <div hidden={upload.fetched}>
+            <Button onClick={this.props.onClose}>
+              Cancel
+          </Button>
+          </div>
           <Button disabled={upload.fetching} onClick={this.handleUpload.bind(this)} color="primary">
-            Upload
+            {upload.fetched ? 'OK' : 'Upload'}
           </Button>
         </DialogActions>
       </Dialog>

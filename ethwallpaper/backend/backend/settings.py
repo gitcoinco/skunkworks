@@ -141,6 +141,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+DEFAULT_PREVIEW_IMAGE = config['web']['default_preview_image']
+PREVIEW_URL = config['web']['preview_url']
+
 STATIC_URL = '/static/'
 
 WALLPAPERS_PATH = "static/wallpapers/"

@@ -1,0 +1,12 @@
+[postgresql]
+host=localhost
+database=ethwallpaper
+user=user
+password=password
+
+[sendgrid]
+api_key=apikeysendgrid
+
+[web]
+default_preview_image=https://d3vv6lp55qjaqc.cloudfront.net/items/2f2b2R0x1j3u450f0p3W/maxresdefault.png
+preview_url=https://ethwallpaper.co/static/wallpapers/

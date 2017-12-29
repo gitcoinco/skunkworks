@@ -16,6 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from .views import IndexView, DetailsView
+
+
 urlpatterns = [
-    url(r'api/', include('api.urls')),
+    url(r'^api/', include('api.urls')),
+    url(r'^preview/(?P<pk>[0-9a-z\-]+)/$',
+        DetailsView.as_view(), name="preview"),
+    url(r'', IndexView.as_view(), name="list"),
 ] + staticfiles_urlpatterns()

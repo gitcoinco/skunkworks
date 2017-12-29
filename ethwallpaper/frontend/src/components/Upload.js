@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 import Dropzone from 'react-dropzone';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
@@ -75,7 +74,7 @@ class Upload extends React.Component {
     const validatorState = this.state.formValidator;
     validatorState[event.target.id] = event.target.value.trim().length > 0;
 
-    const expr = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const expr = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (event.target.id === 'author_email' && !expr.test(event.target.value)) {
       validatorState[event.target.id] = false;

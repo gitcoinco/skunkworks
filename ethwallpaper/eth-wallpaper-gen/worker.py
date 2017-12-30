@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys
 import fcntl
 import os
+import sys
 from configparser import ConfigParser
 
 import psycopg2
 
 from email_helper import EmailHelper
 from generator import WallpaperGenerator
-
 
 pid_file = 'worker.pid'
 fp = open(pid_file, 'w')

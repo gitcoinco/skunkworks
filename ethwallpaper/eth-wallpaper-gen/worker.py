@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import sys
+import fcntl
 import os
 from configparser import ConfigParser
 
@@ -8,6 +10,17 @@ import psycopg2
 
 from email_helper import EmailHelper
 from generator import WallpaperGenerator
+
+
+pid_file = 'worker.pid'
+fp = open(pid_file, 'w')
+try:
+    fcntl.lockf(fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
+except IOError:
+    # another instance is running
+    print('Alredy running!')
+    sys.exit(1)
+
 
 PREVIEW_URL = "https://ethwallpaper.co/preview/"
 IMAGES_PATH = "../backend/static/wallpapers/"

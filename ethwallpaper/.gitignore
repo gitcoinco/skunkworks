@@ -35,4 +35,5 @@ todo
 
 backend/static/*
 config.ini
+.env
 docker/data

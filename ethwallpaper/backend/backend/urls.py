@@ -21,7 +21,7 @@ from .views import IndexView, DetailsView
 
 urlpatterns = [
     url(r'^api/', include('api.urls')),
-    url(r'^preview/(?P<pk>[0-9a-z\-]+)/$',
+    url(r'^preview/(?P<pk>[0-9a-z\-]+)$',
         DetailsView.as_view(), name="preview"),
     url(r'', IndexView.as_view(), name="list"),
 ] + staticfiles_urlpatterns()

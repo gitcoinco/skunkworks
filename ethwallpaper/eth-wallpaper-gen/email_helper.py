@@ -9,7 +9,7 @@ from sendgrid.helpers.mail import Content, Email, Mail
 
 SUBJECT = "You upload is complete"
 BODY = "View your ETHWallpaper here: "
-SENDER = "upload@ethwallpeper.co"
+SENDER = "founders@gitcoin.co"
 
 
 class EmailHelper(object):

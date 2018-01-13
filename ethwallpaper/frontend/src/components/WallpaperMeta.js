@@ -41,9 +41,14 @@ class WallpaperMeta extends React.Component {
     return (
       <div className="wallpaper-meta">
         <LinearProgress className={cls} />
-        <div className="left-section svg-background">
-          {payload.author} &gt; {payload.title}
+        <div className="left-section">
+          <a className="twitter-share-button"
+             href="https://twitter.com/intent/tweet?text=Check%20out%20this%20%23ETH%20Wallpaper%3A"
+             data-size="large">
+            Tweet
+          </a>
         </div>
+
         <div className="right-section">
           <span onClick={this.handleReport.bind(this)} id="report-button" className="svg-background">
             {payload.reports}
@@ -55,14 +60,6 @@ class WallpaperMeta extends React.Component {
             {payload.downloads}
           </span>
         </div>
-
-        <a
-          className="twitter-share-button"
-          href="https://twitter.com/intent/tweet?text=Check%20out%20this%20%23ETH%20Wallpaper%3A"
-          data-size="large"
-        >
-          Tweet
-        </a>
       </div>
     );
   }

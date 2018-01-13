@@ -23,6 +23,23 @@ yarn >= 1.3.2 (optional)
 
 ## Setup
 
+- Database
+
+ ```bash
+CREATE ROLE ethwallpaper;
+ALTER ROLE ethwallpaper WITH LOGIN PASSWORD '' NOSUPERUSER NOCREATEDB NOCREATEROLE;
+CREATE DATABASE ethwallpaperdb OWNER ethwallpaper;
+REVOKE ALL ON DATABASE ethwallpaperdb FROM PUBLIC;
+GRANT CONNECT ON DATABASE ethwallpaperdb TO ethwallpaper;
+GRANT ALL ON DATABASE ethwallpaperdb TO ethwallpaper;
+```
+
+- DB Config
+
+```bash
+Create config.ini from config.ini.example and update the config accordingly
+```
+
 - Backend
 
 ``` bash

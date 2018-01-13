@@ -11,7 +11,7 @@ class WallpaperSerializer(serializers.ModelSerializer):
         """Meta class to map serializer's fields with the model fields."""
         model = Wallpaper
         fields = ('id', 'title', 'author', 'author_email', 'tags', 'ext',
-                  'downloads', 'date_created', 'resolution', 'category')
+                  'downloads', 'date_created', 'resolution', 'category', 'description')
         read_only_fields = (
             ['ext', 'resolution', 'category', 'date_created', 'date_updated',
              'downloads'])
@@ -32,7 +32,7 @@ class WallpaperDetailsSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'title', 'author', 'author_email', 'tags', 'resolution',
              'category', 'ext', 'url', 'downloads', 'date_created', 'likes',
-             'reports')
+             'reports', 'description')
         read_only_fields = (
             ['date_created', 'downloads', 'url', 'likes', 'reports'])
 

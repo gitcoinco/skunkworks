@@ -6,8 +6,8 @@ class Wallpaper(models.Model):
 
     """This class represents the Wallpaper model."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=255, blank=False, unique=False)
-    author = models.CharField(max_length=255, blank=False, unique=False)
+    title = models.CharField(max_length=255, blank=True, unique=False)
+    author = models.CharField(max_length=255, blank=True, unique=False)
     author_email = models.EmailField(max_length=255, blank=True)
     logo_size = models.FloatField(default=1)
     tags = models.CharField(max_length=255, blank=True, unique=False)
@@ -17,12 +17,12 @@ class Wallpaper(models.Model):
     downloads = models.IntegerField(default=0)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(
-        default="Pending", max_length=10, blank=False, unique=False)
+    status = models.CharField(default="Pending", max_length=10, blank=False, unique=False)
+    description = models.TextField(blank=False, unique=False)
 
     def __str__(self):
         """Return a human readable representation of the model instance."""
-        return "{}".format(self.title)
+        return "{}".format(self.description)
 
 
 class Like(models.Model):

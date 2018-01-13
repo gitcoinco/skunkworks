@@ -17,7 +17,7 @@ class Search extends React.Component {
         <input
           onKeyPress={this.handleKeyPress.bind(this)}
           className="search-text"
-          placeholder="Search for free high-resolution wallpapaers"
+          placeholder="Search for free high-resolution wallpapers"
           type="search"
         />
       </section>

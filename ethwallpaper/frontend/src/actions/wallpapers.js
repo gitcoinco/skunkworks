@@ -27,11 +27,14 @@ export function uploadWallpaper(wallpaper) {
   const type = `UPLOAD_WALLPAPER`;
 
   let data = new FormData();
-  data.append('file', wallpaper.file);
-  data.append('title', wallpaper.title);
-  data.append('author', wallpaper.author);
+
+  wallpaper.files.forEach(function (f, i) {
+    data.append('file' + i, f);
+  });
+
+  data.append('count', wallpaper.files.length);
   data.append('author_email', wallpaper.author_email);
-  data.append('tags', wallpaper.tags || '');
+  data.append('description', wallpaper.description);
   data.append('logoSize', wallpaper.logoSize);
 
   return function(dispatch) {

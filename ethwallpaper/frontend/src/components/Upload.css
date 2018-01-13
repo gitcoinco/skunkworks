@@ -4,17 +4,7 @@
   text-align: center;
 }
 
-.upload-preview {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.upload-preview img {
-  max-width: 90%;
-  height: auto;
-}
-
-.text-fileds {
+.text-fields {
   width: 60%;
   float: left;
 }
@@ -25,7 +15,7 @@
 }
 
 .size-fields > div {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .radio-group {
@@ -37,5 +27,9 @@
 }
 
 .dialog-title {
-  height: 20px;
+  height: 30px;
+}
+
+.helper-text {
+  font-size: 12px;
 }

@@ -11,3 +11,5 @@ const apiClient = axios.create({
 export default apiClient;
 
 export const WALLPAPERS = 'wallpapers/';
+
+export const chartDataUrl = 'https://ethgasstation.info/json/predictTable.json';

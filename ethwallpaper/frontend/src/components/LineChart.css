@@ -1,0 +1,52 @@
+.ui-chart {
+    position: relative;
+    width: 600px;
+    height: 300px;
+    margin: 50px auto;
+}
+
+.ui-chart .recharts-tooltip-wrapper {
+    display: none;
+}
+
+.recharts-label {
+    font-size: 13px;
+    fill: #808080;
+}
+
+.tooltip-container {
+    padding: 10px 0;
+    background: #636364;
+    border-radius: 4px;
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    top: -55px;
+    left: -40px;
+    z-index: 10;
+    width: 80px;
+    text-align: center;
+}
+
+.tooltip-container:before{
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: calc(50% - 8px);
+    bottom: -8px;
+    border-top: 8px solid #636364;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+}
+
+.tooltip-container p {
+    margin: 0;
+    font-size: 12px;
+}
+
+h3 {
+    text-align: center;
+}

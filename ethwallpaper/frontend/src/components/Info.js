@@ -10,12 +10,12 @@ class Info extends React.Component {
     return (
       <div className="wallpaper-info">
         <h3>Info</h3>
+        <h5>Description</h5>
+        <div>{payload.description}</div>
         <h5>Resolution</h5>
         <div>{payload.resolution}</div>
         <h5>License</h5>
         <div>Creative Commons</div>
-        <h3>Tags</h3>
-        <div>{payload.tags !== 'undefined' && payload.tags}</div>
       </div>
     );
   }

@@ -1,0 +1,30 @@
+.swiper-gallery {
+    height: 50vh;
+}
+
+.swiper-container:first-child {
+    height: 80%;
+    width: 100%;
+}
+
+.swiper-container:last-child {
+    height: 20%;
+    box-sizing: border-box;
+    margin-top: 0.5rem;
+}
+
+.swiper-container:last-child .swiper-slide {
+    width: 25%;
+    height: 5rem !important;
+    opacity: 0.4;
+    margin-right: 10px;
+}
+
+.swiper-container:last-child .swiper-slide-active {
+    opacity: 1;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}

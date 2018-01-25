@@ -57,45 +57,45 @@ class CreateView(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
 
-        if 'file' not in request.FILES:
-            # Wallpaper image is required
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+        for i in range(int(request.POST['count'])):
 
-        uploaded_file = request.FILES['file']
-        if uploaded_file.content_type == 'image/png':
-            self.ext = 'png'
-        elif uploaded_file.content_type == 'image/jpeg':
-            self.ext = 'jpg'
-        else:
-            # Invalid file type
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            uploaded_file = request.FILES['file' + str(i)]
+            if uploaded_file.content_type == 'image/png':
+                self.ext = 'png'
+            elif uploaded_file.content_type == 'image/jpeg':
+                self.ext = 'jpg'
+            elif uploaded_file.content_type == 'image/gif':
+                self.ext = 'gif'
+            else:
+                # Invalid file type
+                return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        self.id = uuid.uuid4()
+            self.id = uuid.uuid4()
 
-        filename = "{}{}.{}".format(
-            settings.WALLPAPERS_ABSOLUTE_PATH, self.id, self.ext)
+            filename = "{}{}.{}".format(
+                settings.WALLPAPERS_ABSOLUTE_PATH, self.id, self.ext)
 
-        with open(filename, 'wb+') as temp_file:
-            for chunk in uploaded_file.chunks():
-                temp_file.write(chunk)
+            with open(filename, 'wb+') as temp_file:
+                for chunk in uploaded_file.chunks():
+                    temp_file.write(chunk)
 
-        Image.MAX_IMAGE_PIXELS = None
-        im = Image.open(filename)
-        self.size = im.size
+            Image.MAX_IMAGE_PIXELS = None
+            im = Image.open(filename)
+            self.size = im.size
 
-        if 'logoSize' in request.POST:
-            if request.POST['logoSize'] == 'large':
-                self.logo_size = 1.4
-            elif request.POST['logoSize'] == 'small':
-                self.logo_size = 0.6
+            if 'logoSize' in request.POST:
+                if request.POST['logoSize'] == 'large':
+                    self.logo_size = 1.4
+                elif request.POST['logoSize'] == 'small':
+                    self.logo_size = 0.6
 
-        # spec = importlib.util.spec_from_file_location(
-        #     "module.name", settings.WALLPAPER_GEN_PATH)
-        # gen = importlib.util.module_from_spec(spec)
-        # spec.loader.exec_module(gen)
-        # gen.main(filename, filename, logoSize)
+            try:
+                self.create(request, *args, **kwargs)
+            except ():
+                return Response({ 'success': False }, status=status.HTTP_400_BAD_REQUEST)
 
-        return self.create(request, *args, **kwargs)
+        return Response({ 'success': True }, status=status.HTTP_201_CREATED)
+
 
     def perform_create(self, serializer):
         """Save the post data when creating a new wallpaper."""
@@ -103,6 +103,7 @@ class CreateView(generics.ListCreateAPIView):
         serializer.save(id=self.id, resolution='{} x {}'.format(
             self.size[0], self.size[1]), logo_size=self.logo_size,
             category=self._get_category(), ext=self.ext)
+
 
     def _get_category(self):
         """ Get Category from resolution """

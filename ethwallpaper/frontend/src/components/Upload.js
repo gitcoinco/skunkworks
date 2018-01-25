@@ -8,41 +8,42 @@ import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormControlLabel } from 'material-ui/Form';
 import { LinearProgress } from 'material-ui/Progress';
 
+import { SwiperGallery } from './SwiperGallery';
+
 import { uploadWallpaper, uploadFinish } from '../actions/wallpapers';
 
 import './Upload.css';
 
+
 class Upload extends React.Component {
   state = {
-    title: '',
-    author: '',
+    description: '',
     authorEmail: '',
     logoSize: 'normal',
-    file: null,
+    files: [],
     formValidator: {
-      title: true,
-      author: true,
-      author_email: true,
+      description: true
     },
   };
 
   onDrop(files) {
+    if (files.length > 10) {
+      files = files.slice(0, 10);
+    }
+
     this.setState({
-      file: files[0],
+      files: files
     });
   }
 
   resetState() {
     this.setState({
-      title: '',
-      author: '',
+      description: '',
       authorEmail: '',
       logoSize: 'normal',
-      file: null,
+      files: [],
       formValidator: {
-        title: true,
-        author: true,
-        author_email: true,
+        description: true
       },
     });
   }
@@ -58,7 +59,7 @@ class Upload extends React.Component {
       this.resetState();
     } else {
       const validatorState = this.state.formValidator;
-      if (validatorState.author && validatorState.author_email && validatorState.title) {
+      if (validatorState.description && validatorState.author_email) {
         this.props.dispatch(uploadWallpaper(this.state));
       }
     }
@@ -83,77 +84,64 @@ class Upload extends React.Component {
     this.setState({ formValidator: validatorState });
   };
 
+  handleClose() {
+    this.props.onClose();
+    this.resetState();
+  }
+
   render() {
     const { upload } = this.props;
     const { formValidator } = this.state;
 
     return (
-      <Dialog open={this.props.open} onClose={this.props.onClose}>
+      <Dialog open={this.props.open} onClose={this.handleClose.bind(this)}>
         <DialogTitle className="dialog-title">
-          Upload Wallpaper
+          Upload Wallpapers <br />
+          <span className="helper-text" hidden={upload.fetched}>
+            Upload upto 10 images. Each image must be jpg, png, gif format and less than 5 MB
+          </span>
           {upload.fetching && <LinearProgress />}
         </DialogTitle>
+
         <DialogContent>
           <div hidden={upload.fetched}>
-            {this.state.file && (
-              <div className="upload-preview">
-                <img src={this.state.file.preview} alt="preview" />
-              </div>
-            )}
+            {this.state.files.length > 0 && (<SwiperGallery images={this.state.files} />)}
 
-            {this.state.file === null && (
-              <Dropzone accept="image/jpeg, image/png" className="upload-form" onDrop={this.onDrop.bind(this)}>
-                <p>Try dropping some files here, or click to select files to upload.</p>
-              </Dropzone>
-            )}
+            <Dropzone accept="image/jpeg, image/png, image/gif" className="upload-form"
+                      onDrop={this.onDrop.bind(this)}
+                      multiple={true} maxSize={5242880}
+                      hidden={this.state.files.length > 0}>
+              <p>Try dropping some files here, or click to select files to upload.</p>
+            </Dropzone>
 
-            <div className="text-fileds">
+            <div className="text-fields">
               <TextField
-                autoFocus
-                className="form-field"
-                id="title"
-                label="Title*"
-                onChange={this.handleTextChange('title')}
-                onBlur={this.validate.bind(this)}
-                type="text"
-                margin="normal"
-                error={!formValidator.title}
-                fullWidth
+                  className="form-field"
+                  id="author_email"
+                  label="Author Email*"
+                  onChange={this.handleTextChange('author_email')}
+                  onBlur={this.validate.bind(this)}
+                  type="email"
+                  helperText="Used to send you a link when your image is done processing. We'll never sell your email address"
+                  margin="normal"
+                  error={!formValidator.author_email}
+                  fullWidth
               />
 
               <TextField
-                className="form-field"
-                id="author"
-                label="Author*"
-                onChange={this.handleTextChange('author')}
-                onBlur={this.validate.bind(this)}
-                type="text"
-                error={!formValidator.author}
-                fullWidth
-              />
-
-              <TextField
-                className="form-field"
-                id="author_email"
-                label="Author Email*"
-                onChange={this.handleTextChange('author_email')}
-                onBlur={this.validate.bind(this)}
-                type="email"
-                helperText="Used to send you a link when your image is done processing. We'll never sell your email address"
-                margin="normal"
-                error={!formValidator.author_email}
-                fullWidth
-              />
-
-              <TextField
-                className="form-field"
-                id="tags"
-                label="Tags"
-                onChange={this.handleTextChange('tags')}
-                type="text"
-                fullWidth
+                  id="description"
+                  label="Description*"
+                  multiline
+                  rowsMax="8"
+                  onChange={this.handleTextChange('description')}
+                  onBlur={this.validate.bind(this)}
+                  helperText="Used for search functionality on ethwallpaper.co"
+                  margin="normal"
+                  error={!formValidator.description}
+                  fullWidth
               />
             </div>
+
             <div className="size-fields">
               <div>Size of Ethereum logo</div>
               <RadioGroup
@@ -172,15 +160,15 @@ class Upload extends React.Component {
             </div>
           </div>
           <div hidden={!upload.fetched}>
-            <h5> Your wallpaper has been uploaded successfully!</h5>
+            <h5> Your wallpaper(s) has been uploaded successfully!</h5>
             <div>It is queued for processing and you will receive email notification when ready!</div>
           </div>
         </DialogContent>
         <DialogActions>
           <div hidden={upload.fetched}>
-            <Button onClick={this.props.onClose}>
+            <Button onClick={this.handleClose.bind(this)}>
               Cancel
-          </Button>
+            </Button>
           </div>
           <Button disabled={upload.fetching} onClick={this.handleUpload.bind(this)} color="primary">
             {upload.fetched ? 'OK' : 'Upload'}
@@ -191,9 +179,12 @@ class Upload extends React.Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
     upload: state.upload,
   };
 };
+
+
 export default connect(mapStateToProps)(Upload);

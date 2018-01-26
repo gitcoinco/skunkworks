@@ -9,6 +9,9 @@ import createHistory from 'history/createBrowserHistory';
 import reducers from './reducers';
 export const history = createHistory();
 
-const middleware = applyMiddleware(promise(), thunk, createLogger(), routerMiddleware(history));
+let middleware = [ promise(), thunk, routerMiddleware(history) ];
+if (process.env.NODE_ENV !== 'production') {
+    middleware = [ ...middleware, createLogger() ];
+}
 
-export default createStore(reducers, middleware);
+export default createStore(reducers, applyMiddleware(...middleware));

@@ -1,10 +1,12 @@
 # Ethereal Hackathon 2019
 
-This is a WIP list of things that were built in the Ethereal Hackathon 2019 ( https://gitcoin.co/hackathon/ethhack2019 ):
+This is a list of things that were built in the Ethereal Hackathon 2019 ( https://gitcoin.co/hackathon/ethhack2019 ):
 
-This list is incomplete!  Want to help us complete it and earn some ETH?  [Checkout this bounty](https://github.com/gitcoinco/skunkworks/issues/111).  Meantime, you can browse the submissions to the hackahton [here](https://gitcoin.co/hackathon/ethereal-virtual-hackathon/).
+You can browse the bounties for the hackahton [here](https://gitcoin.co/hackathon/ethereal-virtual-hackathon/).
 
-# [Gitcoin Hackathon Grab Bag](https://github.com/gitcoinco/skunkworks/issues/92)
+## Submissions
+
+There were 81 submissions to the hackathon:
 
 * [Gitcoin Experts](https://github.com/mikery/web/pull/1)  by @mikery
 * [ZKRollups POC](https://github.com/zillerium/openzeppelin-solidity/blob/master/zkrollup.md)  by @zillerium

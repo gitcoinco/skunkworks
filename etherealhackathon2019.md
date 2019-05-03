@@ -2,7 +2,7 @@
 
 This is a WIP list of things that were built in the Ethereal Hackathon 2019 ( https://gitcoin.co/hackathon/ethhack2019 ):
 
-This list is incomplete!  Want to help us complete it and earn some ETH?  [Checkout this bounty](https://github.com/gitcoinco/skunkworks/issues/111).
+This list is incomplete!  Want to help us complete it and earn some ETH?  [Checkout this bounty](https://github.com/gitcoinco/skunkworks/issues/111).  Meantime, you can browse the submissions to the hackahton [here](https://gitcoin.co/hackathon/ethereal-virtual-hackathon/).
 
 # [Gitcoin Hackathon Grab Bag](https://github.com/gitcoinco/skunkworks/issues/92)
 

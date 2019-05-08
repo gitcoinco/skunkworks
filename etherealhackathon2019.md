@@ -91,5 +91,6 @@ There were 81 submissions to the hackathon:
 * [Leap basic interactions](https://github.com/MaxStalker/leap-basic-interactions) by @maxstalker
 * [Leap watcher](https://github.com/travisdmathis/leap-watcher) by @travisdmathis
 * [Tokenapp](https://github.com/Azure-Samples/bc-community-samples/pull/49) by @ringaile
+* [Submission for Ethereum Blockchain Connector - Sharepoint bounty](https://github.com/Azure-Samples/bc-community-samples/pull/32) by @panjevic
 
 <img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/skunkworks/ethreal.md' style='width:1px; height:1px;' >

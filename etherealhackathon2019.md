@@ -6,7 +6,7 @@ You can browse the bounties for the hackahton [here](https://gitcoin.co/hackatho
 
 ## Submissions
 
-There were 81 submissions to the hackathon:
+There were 82 submissions to the hackathon:
 
 * [Gitcoin Experts](https://github.com/mikery/web/pull/1)  by @mikery
 * [ZKRollups POC](https://github.com/zillerium/openzeppelin-solidity/blob/master/zkrollup.md)  by @zillerium
@@ -92,5 +92,5 @@ There were 81 submissions to the hackathon:
 * [Leap watcher](https://github.com/travisdmathis/leap-watcher) by @travisdmathis
 * [Tokenapp](https://github.com/Azure-Samples/bc-community-samples/pull/49) by @ringaile
 * [Submission for Ethereum Blockchain Connector - Sharepoint bounty](https://github.com/Azure-Samples/bc-community-samples/pull/32) by @panjevic
-
+* [Hatnotation] https://github.com/hatgit/hatnotation by @hatgit
 <img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/skunkworks/ethreal.md' style='width:1px; height:1px;' >

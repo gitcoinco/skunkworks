@@ -1,0 +1,44 @@
+- [Pay no load](https://github.com/smitrajput/pay-no-load) by @smitrajput
+- [Command-Line Interactive Ethereum Explorer](https://github.com/acolytec3/alethio_api_cli) by @acolytec3
+- [BlockSpy.Net](https://github.com/Alethio/alethio-gitcoin/pull/8) by @craze3
+- [Waffle-CLI](https://github.com/tezansahu/Waffle-CLI) by @tezansahu
+- [Blake2b f compression precompile](https://github.com/PegaSysEng/pantheon/pull/1614) by @iikirilov
+- [Piper Graph](https://github.com/robin-thomas/piper-graph) by @robin-thomas
+- [Edgeware Subgraph](https://github.com/calchulus/edgeware-subgraph) by @calchulus
+- [Subgraph for Request Network](https://github.com/Christopher-I/subGraphForRequestNetwork) by @Christopher-I
+- [Zinc Graph](https://github.com/sistemico/zinc-subgraph) by @sistemico
+- [Cryptokitties Sales Auction](https://github.com/sudeepb02/cryptokitties-salesauction) by @sudeepb02
+- [Local Ethereum](https://github.com/nanspro/LocalEthereum) by @nanspro
+- [Subgraph Nuo Network](https://github.com/qx133/subgraph-nuo-network) by @qx133
+- [Dragonereum Subgraph](https://github.com/maksim-tolo/dragonereum-subgraph) by @maksim-tolo
+- [Kyber Swap](https://github.com/jjperezaguinaga/kyber-swap) by @jjperezaguinaga
+- [Piper](https://github.com/robin-thomas/piper) by @robin-thomas
+- [Poop Outside the Box](https://github.com/krisc/PoopOutsideTheBox) by @krisc
+- [Proof of Love](https://github.com/DecentLabs/proof-of-love/) by @DecentLabs
+- [Adam](https://github.com/shenwilly/adam) by @shenwilly
+- [Go Raiden Client](https://github.com/cpurta/go-raiden-client) by @cpurta
+- [PyRaiden](https://github.com/nanspro/PyRaiden) by @nanspro
+- [Raiden Burner](https://github.com/johngrantuk/raidenburner) by @johngrantuk
+- [Raiden Ticker](https://github.com/pisuthd/raiden-ticker) by @pisuthd
+- [Email Crypto](https://github.com/snezanasucurovic042/EmailCrypto1) by @snezanasucurovic042
+- [Chain Mail](https://github.com/josh-richardson/chainmail) by @josh-richardson
+- [Arweave Provable Mails](https://github.com/IgorShadurin/arweave-provable-emails) by @IgorShadurin
+- [Ar OpenKnowledge](https://github.com/srisankethu/ar-openknowledge) by @srisankethu
+- [Arweave Knowledger](https://github.com/calchulus/arweave-knowledger) by @calchulus
+- [Expert Advice](https://github.com/niinpatel/expert-advice) by @niinpatel
+- [EveryApp.Net](https://github.com/ArweaveTeam/Bounties/pull/8) by @craze3
+- [Healthraise.io](https://github.com/edsonayllon/healthraise-consensus-hackathon-app) by @edsonayllon
+- [Healthprices](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/24) by @craze3
+- [Submission for Healthcare Bounty for ImmunoBlock Team](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/15) by @moranthomas
+- [Add Wrapped Coffee Coins Project](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/36) by
+  @crisgarner
+- [Beyond Blockchain Hackhaton: Shintsha](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/33) by @owans
+- [BlockSpy](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/31) by @craze3
+- [Deben](https://github.com/ktimam/Beyond-Blockchain-Relay/tree/master/DeFi/deben) by @ktimam
+- [Idle - Get the best out of your lend, with just one token](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/18) by @bugduino
+- [Providentia Submission](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/17) by @ugolino
+- [Chari](https://github.com/DecentLabs/chari) by @DecentLabs
+- [TrueNews Team](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/35) by @AlexMasmej
+- [Honest Media for Beyond Blockchain hackathon](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/13) by @ringaile
+- [News blockchain](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/9) by @viraja1
+- [Added hourly contract support](https://github.com/gitcoinco/web/pull/4747) by @usmanmuhd

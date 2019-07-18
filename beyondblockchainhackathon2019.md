@@ -3,6 +3,7 @@
 - [Pay no load](https://github.com/smitrajput/pay-no-load) by @smitrajput
 - [Command-Line Interactive Ethereum Explorer](https://github.com/acolytec3/alethio_api_cli) by @acolytec3
 - [BlockSpy.Net](https://github.com/Alethio/alethio-gitcoin/pull/8) by @craze3
+- [Go Alethio API](https://github.com/corpetty/go-alethio-api) by @corpetty
 - [Waffle-CLI](https://github.com/tezansahu/Waffle-CLI) by @tezansahu
 - [Blake2b f compression precompile](https://github.com/PegaSysEng/pantheon/pull/1614) by @iikirilov
 - [Piper Graph](https://github.com/robin-thomas/piper-graph) by @robin-thomas
@@ -22,6 +23,7 @@
 - [PyRaiden](https://github.com/nanspro/PyRaiden) by @nanspro
 - [Raiden Burner](https://github.com/johngrantuk/raidenburner) by @johngrantuk
 - [Raiden Ticker](https://github.com/pisuthd/raiden-ticker) by @pisuthd
+- [Gitcoin Hack](https://github.com/NOde-Waste/gitcoin_hack) by @orami
 - [Email Crypto](https://github.com/snezanasucurovic042/EmailCrypto1) by @snezanasucurovic042
 - [Chain Mail](https://github.com/josh-richardson/chainmail) by @josh-richardson
 - [Arweave Provable Mails](https://github.com/IgorShadurin/arweave-provable-emails) by @IgorShadurin
@@ -44,3 +46,5 @@
 - [Honest Media for Beyond Blockchain hackathon](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/13) by @ringaile
 - [News blockchain](https://github.com/ConsenSys/Beyond-Blockchain-Relay/pull/9) by @viraja1
 - [Added hourly contract support](https://github.com/gitcoinco/web/pull/4747) by @usmanmuhd
+- [Valid news](https://github.com/ConsenSys/Beyond-Blockchain-Relay/issues/11) by @allberg
+- [Kudos Bot](https://github.com/kuhnchris/kudosbot) by @kuhnchris

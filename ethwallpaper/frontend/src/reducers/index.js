@@ -6,6 +6,7 @@ import wallpapers from './wallpapers';
 import wallpaper from './wallpaper';
 import upload from './upload';
 import activity from './activity';
+import linechart from './linechart';
 
 export default combineReducers({
   filter,
@@ -14,4 +15,5 @@ export default combineReducers({
   wallpaper,
   upload,
   activity,
+  linechart,
 });

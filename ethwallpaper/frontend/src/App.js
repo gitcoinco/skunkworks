@@ -4,6 +4,7 @@ import { Route, Router } from 'react-router';
 
 import Main from './layout/Main';
 import Preview from './layout/Preview';
+import LineChartComponent from './components/LineChart';
 import Footer from './components/Footer';
 
 import './App.css';
@@ -26,6 +27,7 @@ class App extends Component {
         <div className="App">
           <Route exact path="/" component={Main} />
           <Route path="/preview/:id" component={Preview} />
+          <Route path="/chart" component={LineChartComponent} />
           <Footer />
         </div>
       </Router>

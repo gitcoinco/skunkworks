@@ -83,10 +83,6 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
 
-amdefine@>=0.0.4:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-
 ansi-align@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-1.1.0.tgz#2f0c1658829739add5ebb15e6b0c6e3423f016ba"
@@ -260,7 +256,7 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
-async@^1.4.0, async@^1.5.2:
+async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -1573,6 +1569,10 @@ commander@2.12.x, commander@~2.12.1:
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
+commander@~2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
@@ -2082,6 +2082,12 @@ dom-urls@^1.1.0:
 dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
+
+dom7@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-2.1.3.tgz#a736f9c3bfbc4ca039a81cd095f97d1d7f3de19c"
+  dependencies:
+    ssr-window "^1.0.1"
 
 domain-browser@^1.1.1:
   version "1.1.7"
@@ -3003,14 +3009,14 @@ handle-thing@^1.2.5:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
 
 handlebars@^4.0.3:
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.11.tgz#630a35dfe0294bc281edae6ffc5d329fc7982dcc"
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.5.3.tgz#5cf75bd8714f7605713511a56be7c349becb0482"
   dependencies:
-    async "^1.4.0"
+    neo-async "^2.6.0"
     optimist "^0.6.1"
-    source-map "^0.4.4"
+    source-map "^0.6.1"
   optionalDependencies:
-    uglify-js "^2.6"
+    uglify-js "^3.1.4"
 
 har-schema@^1.0.5:
   version "1.0.5"
@@ -3894,6 +3900,10 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
+"js-tokens@^3.0.0 || ^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+
 js-yaml@^3.4.3, js-yaml@^3.7.0, js-yaml@^3.9.1:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
@@ -4252,6 +4262,12 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
   dependencies:
     js-tokens "^3.0.0"
 
+loose-envify@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
+
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -4505,6 +4521,10 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+neo-async@^2.6.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
 
 no-case@^2.2.0:
   version "2.3.2"
@@ -5318,6 +5338,14 @@ prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8,
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.7.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 proxy-addr@~2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.2.tgz#6571504f47bb988ec8180253f85dd7e14952bdec"
@@ -5491,6 +5519,18 @@ react-event-listener@^0.5.0, react-event-listener@^0.5.1:
     fbjs "^0.8.16"
     prop-types "^15.6.0"
     warning "^3.0.0"
+
+react-id-swiper@^1.5.7:
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/react-id-swiper/-/react-id-swiper-1.6.9.tgz#463116cb2b2b0ecea23b5e62ebfa0640e545f6f1"
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.7.2"
+    swiper "^4.4.6"
+
+react-is@^16.8.1:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
 
 react-jss@^8.1.0:
   version "8.1.0"
@@ -6175,12 +6215,6 @@ source-map@0.5.x, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, sourc
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
-source-map@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
-  dependencies:
-    amdefine ">=0.0.4"
-
 source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
@@ -6239,6 +6273,10 @@ sshpk@^1.7.0:
     ecc-jsbn "~0.1.1"
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
+
+ssr-window@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-1.0.1.tgz#30752a6a4666e7767f0b7e6aa6fc2fdbd0d9b369"
 
 "statuses@>= 1.3.1 < 2":
   version "1.4.0"
@@ -6404,6 +6442,13 @@ sw-toolbox@^3.4.0:
   dependencies:
     path-to-regexp "^1.0.1"
     serviceworker-cache-polyfill "^4.0.0"
+
+swiper@^4.4.6:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-4.5.1.tgz#ed43998e780ceb478610079c8d23fd425eca636f"
+  dependencies:
+    dom7 "^2.1.3"
+    ssr-window "^1.0.1"
 
 symbol-observable@^1.0.3, symbol-observable@^1.0.4, symbol-observable@^1.1.0:
   version "1.1.0"
@@ -6580,7 +6625,7 @@ uglify-js@3.2.x, uglify-js@^3.0.13:
     commander "~2.12.1"
     source-map "~0.6.1"
 
-uglify-js@^2.6, uglify-js@^2.8.29:
+uglify-js@^2.8.29:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   dependencies:
@@ -6588,6 +6633,13 @@ uglify-js@^2.6, uglify-js@^2.8.29:
     yargs "~3.10.0"
   optionalDependencies:
     uglify-to-browserify "~1.0.0"
+
+uglify-js@^3.1.4:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.7.3.tgz#f918fce9182f466d5140f24bb0ff35c2d32dcc6a"
+  dependencies:
+    commander "~2.20.3"
+    source-map "~0.6.1"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"

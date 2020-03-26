@@ -8,9 +8,4 @@ module.exports = {
 			twitter: `codenamejason`,
 		},
 	},
-	plugins: [
-		{
-			resolve: `gatsby-plugin-material-ui`,
-		},
-	],
 }

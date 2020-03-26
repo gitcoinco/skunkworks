@@ -1,0 +1,12 @@
+/*
+* Main stylesheet for social net
+* @todo: break out into smaller pieces later
+*/
+
+.container-fluid {
+    background-color: blanchedalmond;
+}
+
+.main {
+    max-width: 500px;
+}

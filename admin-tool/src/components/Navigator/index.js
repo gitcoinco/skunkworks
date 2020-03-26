@@ -52,7 +52,7 @@ const categories = [
 	{
 		id: 'Exchanges',
 		children: [
-
+			{ id: 'iNET Exchange', icon: <PublicIcon />, page: 'exchange' },
 		]
 	},
 	{

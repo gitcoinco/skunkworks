@@ -21,7 +21,7 @@ import Main from 'components/SocialNet/main.js'
 // Contract abis
 import SocialNetwork from 'abis/SocialNetwork.json'
 import Web3 from 'web3'
-
+import { Tab } from '@material-ui/core'
 
 const styles = theme => ({
 	paper: {
@@ -53,6 +53,7 @@ const styles = theme => ({
  * @dev getWeb3()
  * 
  */
+
 const getWeb3 = () =>
   new Promise((resolve, reject) => {
       
@@ -224,6 +225,7 @@ class SocialNet extends React.Component {
     render() {
         return (
           <div>
+            <TabBar />
             <Navbar account={this.state.account} />
             {this.state.loading
               ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
@@ -241,4 +243,5 @@ class SocialNet extends React.Component {
 
 }
 
-export default withStyles(styles)(SocialNet);
+export default SocialNet;
+

@@ -1,0 +1,44 @@
+{
+  "name": "inet-admin",
+  "version": "1.0.0",
+  "description": "InsureNET Administration Dashboard",
+  "main": "index.js",
+  "repository": "https://github.com/willcode4food/gatsby-starter-paperbase",
+  "author": "Jason Romero jaxcoder@outlook.com",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/icons": "^4.5.1",
+    "bootstrap": "^4.4.1",
+    "classnames": "^2.2.6",
+    "gatsby": "^2.19.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "reactstrap": "^8.4.1",
+    "typeface-merriweather": "^0.0.72",
+    "typeface-montserrat": "^0.0.75",
+    "typography": "^0.16.19",
+    "web3": "^1.2.6"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "identicon": "^3.0.1",
+    "identicon.js": "^2.3.3",
+    "prettier": "^1.19.1",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "rm -rf public && rm -rf .cache",
+    "dev": "NODE_ENV=development rm -rf ./.cache && yarn && gatsby develop -H 0.0.0.0",
+    "develop": "yarn dev",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "prebuild": "yarn clean && yarn",
+    "start": "yarn develop"
+  }
+}

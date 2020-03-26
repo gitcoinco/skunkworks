@@ -1,0 +1,10 @@
+node_modules
+.cache/
+
+# Build directory
+public/
+
+# misc
+mock
+
+environmentConfigs
